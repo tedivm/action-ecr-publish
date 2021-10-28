@@ -1,0 +1,30 @@
+name: Push to ECR
+
+on:
+  push:
+    branches:
+      - "main"
+  release:
+    types:
+      - "published"
+
+
+jobs:
+  push-container:
+    runs-on: ubuntu-latest
+
+    # These permissions are needed to interact with GitHub's OIDC Token endpoint.
+    permissions:
+      id-token: write
+      contents: read
+
+    steps:
+
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: "Create and Push Image"
+        uses: explosion/action-ecr-publish@v1
+        with:
+          aws_account_id: REGISTRY_ACCOUNT
+          aws_region: REGISTRY_REGION
