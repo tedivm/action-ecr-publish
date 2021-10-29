@@ -1,6 +1,11 @@
 name: 'Quick ECR Push'
 description: 'Push containers to ECR easily.'
 
+branding:
+  icon: 'arrow-up-right'  
+  color: 'yellow'
+
+
 inputs:
 
   aws_account_id:
