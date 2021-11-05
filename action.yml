@@ -18,7 +18,7 @@ inputs:
 
   platforms:
     description: 'The platforms to build images for, comma-separated. Valid options are linux/amd64 and linux/arm64.'
-    required: false
+    required: true
     default: 'linux/amd64,linux/arm64'
 
 
