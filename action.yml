@@ -16,6 +16,11 @@ inputs:
     description: 'The region the container registry is hosted in.'
     required: true
 
+  platforms:
+    description: 'The platforms to build images for, comma-separated. Valid options are linux/amd64 and linux/arm64.'
+    required: false
+    default: 'linux/amd64,linux/arm64'
+
 
 runs:
   using: "composite"
@@ -54,6 +59,6 @@ runs:
       with:
         context: .
         push: true
-        platforms: linux/amd64,linux/arm64
+        platforms: ${{ inputs.platforms }}
         tags: ${{ steps.meta.outputs.tags }}
         labels: ${{ steps.meta.outputs.labels }}
