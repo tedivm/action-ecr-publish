@@ -28,3 +28,4 @@ jobs:
         with:
           aws_account_id: REGISTRY_ACCOUNT
           aws_region: REGISTRY_REGION
+          aws_role_to_assume: 'github-actions-${{ github.event.repository.name }}'
