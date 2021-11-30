@@ -12,6 +12,10 @@ inputs:
     description: 'The account ID of the container registry.'
     required: true
 
+  aws_role_to_assume:
+    description: 'Name of the role to assume.'
+    required: true
+
   aws_region:
     description: 'The region the container registry is hosted in.'
     required: true
@@ -35,7 +39,7 @@ runs:
     - name: Configure AWS credentials
       uses: aws-actions/configure-aws-credentials@master
       with:
-        role-to-assume: arn:aws:iam::${{ inputs.aws_account_id }}:role/github-actions-${{ github.event.repository.name }}
+        role-to-assume: arn:aws:iam::${{ inputs.aws_account_id }}:role/${{ inputs.aws_role_to_assume }}
         aws-region: ${{ inputs.aws_region }}
 
     - name: Login to Amazon ECR
