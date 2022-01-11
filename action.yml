@@ -39,6 +39,10 @@ inputs:
     description: 'SSH configuration, if needed'
     required: false
 
+  secrets:
+    description: 'A list of secrets to be passed through to the docker build, if needed (eg `key=string`).'
+    required: false
+
 runs:
   using: "composite"
   steps:
@@ -81,3 +85,4 @@ runs:
         tags: ${{ steps.meta.outputs.tags }}
         labels: ${{ steps.meta.outputs.labels }}
         ssh: ${{ inputs.ssh }}
+        secrets: ${{ inputs.secrets }}
