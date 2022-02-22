@@ -43,6 +43,11 @@ inputs:
     description: 'A list of secrets to be passed through to the docker build, if needed (eg `key=string`).'
     required: false
 
+  ecr_repo_name:
+    description: 'An ECR repository name. Defaults to the name of the Github repository.'
+    required: false
+    default: ${{ github.event.repository.name }}
+
 runs:
   using: "composite"
   steps:
@@ -67,7 +72,7 @@ runs:
       id: meta
       uses: docker/metadata-action@v3
       with:
-        images: ${{ inputs.aws_account_id }}.dkr.ecr.${{ inputs.aws_region }}.amazonaws.com/${{ github.event.repository.name }}
+        images: ${{ inputs.aws_account_id }}.dkr.ecr.${{ inputs.aws_region }}.amazonaws.com/${{ inputs.ecr_repo_name }}
         tags: |
           type=schedule,pattern=latest
           type=semver,pattern={{version}}
