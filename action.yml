@@ -44,7 +44,7 @@ inputs:
     required: false
 
   ecr_repo_name:
-    description: 'An ECR registry name , if not the name of the repository'
+    description: 'An ECR repository name. Defaults to the name of the Github repository.'
     required: false
     default: ${{ github.event.repository.name }}
 
