@@ -24,7 +24,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: "Create and Push Image"
-        uses: explosion/action-ecr-publish@v1
+        uses: tedivm/action-ecr-publish@v1
         with:
           aws_account_id: REGISTRY_ACCOUNT
           aws_region: REGISTRY_REGION
